@@ -66,3 +66,13 @@
 
 1. flex容器中，flex元素属性 flex: 1 的用处，flex属性实际是 flex-shrink, flex-grow, flex-basis 三个属性的简写方式，当父级容器中还有剩余空间时，flex-grow 大于等于 1的 flex元素会根据一定规则瓜分剩余空间，参考 [flex: 1 详解](https://www.jianshu.com/p/57a94430dcbe)
 2. async/await 是基于 Promise 的语法糖，async放在包含异步调用的函数声明前，await 放在调用异步函数的语句前，当函数中包含多个 await 语句时，可以通过类似 Promise.all 的方法减少时间开销，参考 [mdn async和await:让异步编程更简单](https://developer.mozilla.org/zh-CN/docs/learn/JavaScript/%E5%BC%82%E6%AD%A5/Async_await)
+
+### Tic Tac Toe(井字棋)
+React入门教程
+
+技术栈: React
+
+总结:
+
+1. 数组增加元素可以使用 push 和 concat 方法，区别是前者会更新原数组，而后者不更新原数组，而是返回一个新的副本，基于 React 的不可变数据的概念(总是用完整的新数据去代替旧数据，而不是在旧数据的基础上更新)，如果组件内部数据是数组类型的数据， 那么更新的时候应该用 concat 而不是 push
+2. React的单向数据流和状态提升：“通常，多个组件需要反映相同的变化数据，这时我们建议将共享状态提升到最近的共同父组件中去”，“在 React 应用中，任何可变数据应当只有一个相对应的唯一数据源。通常，state 都是首先添加到需要渲染数据的组件中去。然后，如果其他组件也需要这个 state，那么你可以将它提升至这些组件的最近共同父组件中。你应当依靠自上而下的数据流，而不是尝试在不同组件间同步 state”，React和Vue都是遵从从父组件到子组件的单向数据流，参考 [React官方文档 状态提升](https://react.docschina.org/docs/lifting-state-up.html)
