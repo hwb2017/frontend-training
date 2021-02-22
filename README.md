@@ -76,3 +76,16 @@ React入门教程
 
 1. 数组增加元素可以使用 push 和 concat 方法，区别是前者会更新原数组，而后者不更新原数组，而是返回一个新的副本，基于 React 的不可变数据的概念(总是用完整的新数据去代替旧数据，而不是在旧数据的基础上更新)，如果组件内部数据是数组类型的数据， 那么更新的时候应该用 concat 而不是 push
 2. React的单向数据流和状态提升：“通常，多个组件需要反映相同的变化数据，这时我们建议将共享状态提升到最近的共同父组件中去”，“在 React 应用中，任何可变数据应当只有一个相对应的唯一数据源。通常，state 都是首先添加到需要渲染数据的组件中去。然后，如果其他组件也需要这个 state，那么你可以将它提升至这些组件的最近共同父组件中。你应当依靠自上而下的数据流，而不是尝试在不同组件间同步 state”，React和Vue都是遵从从父组件到子组件的单向数据流，参考 [React官方文档 状态提升](https://react.docschina.org/docs/lifting-state-up.html)
+
+### Toy React
+极客大学 Toy React, 完成一个实现部分功能的简易 React 框架
+
+技术栈: 原生JS
+
+总结:
+
+1. JSX技术是在 Javascript 中穿插 html 语法，以达到提高定义模板的效率(减少用createElement等冗长的dom语句), 它是依赖于 Babel 的一个插件实现的，即在预编译的过程中，将 Javascript 中的 html 语句转换为对应的 dom 创建方法(函数)，而React则提供这些函数的实现
+2. React 中的 setState 语句用于更改组件的内部数据，是将新的 state 对象与旧的 state 对象进行合并，做一次深度拷贝，setState方法结束时会对组件内的节点进行重新渲染，Toy React中是基于 dom 的 range api 来实现元素定位的
+3. 虚拟DOM技术可以减少DOM绘制次数和范围来降低对性能的影响，通过旧的和新的虚拟DOM树的比对，实现精细化更新，参考 [虚拟DOM的实现原理和优缺点](https://blog.csdn.net/zyq51/article/details/108741558)
+4. 创建空对象时，使用Object.create(null)比用字面量{}的方式要好，因为字面量的方式会从Object原型中继承很多方法，参考[Object.create(null) 和 {} 的区别](https://juejin.cn/post/6844903733432680456)
+5. Symbol 作为属性名，遍历对象的时候，该属性不会出现在for...in、for...of循环中，也不会被Object.keys()、Object.getOwnPropertyNames()、JSON.stringify()返回，但它可以通过Object.getOwnPropertySymbols()方法访问到，虽然不能做到完全私有，但是可以作为私有属性的替代解决办法

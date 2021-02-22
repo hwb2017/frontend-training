@@ -1,29 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import {createElement, Component, render} from "./toy-react.js"
 
-// class Square extends React.Component {
-//     render() {
-//       return (
-//         <button 
-//           className="square"
-//           onClick={() => this.props.onClick()}
-//         >
-//           {this.props.value}
-//         </button>
-//       );
-//     }
-// }
-
-function Square(props) {
-  return (
-    <button className="square" onClick={props.onClick}>
-      {props.value}
-    </button>
-  );
+class Square extends Component {
+    render() {
+      return (
+        <button 
+          className="square"
+          onClick={() => this.props.onClick()}
+        >
+          {this.props.value}
+        </button>
+      );
+    }
 }
 
-class Board extends React.Component {
+class Board extends Component {
     renderSquare(i) {
       return (
         <Square 
@@ -56,7 +46,7 @@ class Board extends React.Component {
     }
 }
   
-class Game extends React.Component {
+class Game extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -133,10 +123,12 @@ class Game extends React.Component {
   
 // ========================================
   
-ReactDOM.render(
+render(
     <Game />,
     document.getElementById('root')
 );
+// let a = <Game />
+// console.log(a.vdom);
 
 function calculateWinner(squares) {
   const lines = [
