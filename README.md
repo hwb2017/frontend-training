@@ -89,3 +89,13 @@ React入门教程
 3. 虚拟DOM技术可以减少DOM绘制次数和范围来降低对性能的影响，通过旧的和新的虚拟DOM树的比对，实现精细化更新，参考 [虚拟DOM的实现原理和优缺点](https://blog.csdn.net/zyq51/article/details/108741558)
 4. 创建空对象时，使用Object.create(null)比用字面量{}的方式要好，因为字面量的方式会从Object原型中继承很多方法，参考[Object.create(null) 和 {} 的区别](https://juejin.cn/post/6844903733432680456)
 5. Symbol 作为属性名，遍历对象的时候，该属性不会出现在for...in、for...of循环中，也不会被Object.keys()、Object.getOwnPropertyNames()、JSON.stringify()返回，但它可以通过Object.getOwnPropertySymbols()方法访问到，虽然不能做到完全私有，但是可以作为私有属性的替代解决办法
+
+### Tic Tac Toe(AI实现)
+极客大学前端训练营，实现TicTacToe的对战AI
+
+技术栈: 原生JS
+
+总结:
+
+1. vertical-align 属性用来对齐一行的内联元素，默认是基线对齐，对于 inline-block 类型的元素，基线的确定规则是：当元素无文本内容，或者 overflow 属性不为 visible 时，基线为元素的 bottom margin；当元素包含文本内容时，基线为文本的基线位置。因此当一群 inline-block 元素中有的有文本，有的没有文本时，会出现“上蹿下跳”的现象，解决办法之一是将元素的 vertical-align 属性设置为 middle，即按照基线 + x-height 的位置来对齐，参考 [深入理解css中的vertical-align属性](https://www.cnblogs.com/starof/p/4512284.html)
+2. Object.create(某个对象) 方法，即以某个对象为原型创建新的对象，可以作为克隆对象/数组的一种方法，好处是方法和数据都保存在原型中，当需要多次克隆时，这种克隆方法可以减少内存占用
