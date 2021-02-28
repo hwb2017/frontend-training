@@ -120,3 +120,13 @@ React入门教程
 1. grid布局可以应对一些复杂些的场景，参考 [阮一峰Grid布局教程](http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html)
 2. css的数据属性可以用于保存不需要渲染，但是可以用于后续JS处理的属性，比起通过在js中用数据结构保存属性，这种方式可以更好看出数据和某个html元素的绑定，参考 [MDN 使用数据属性](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Howto/Use_data_attributes)
 3. 内联元素的宽高属性和 margin-top, margin-bottom 属性都不生效，宽高实际由内容大小决定，上下margin不会生效，但是在盒模型中可以看到具体值
+
+### 异步编程Demo
+极客大学异步编程练习
+
+技术栈: 原生JS
+
+总结:
+
+1. Promise的引入解决了回调地狱影响代码可读性的问题，async/await的引入使得可以像书写同步代码一样写异步代码
+2. async和generator配合可以实现一些无限时序流的效果
