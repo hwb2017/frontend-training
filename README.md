@@ -109,3 +109,14 @@ React入门教程
 
 1. 只有定位元素的 z-index 值才有效，定位元素与非定位元素重叠时会覆盖非定位元素，因此可以用来实现遮罩效果，参考 [深入理解css中position属性及z-index属性](https://www.cnblogs.com/zhuzhenwei918/p/6112034.html)
 2. transition 和 animation 都可以用来实现 css 的动画效果，主要区别是前者是监听某个css属性变化时触发的，后者是在从元素渲染时触发的，参考 [transition与animation的区别](https://blog.csdn.net/liaozhongping/article/details/79511820)
+
+### 食谱查询器
+网易云课堂原生JS实战，通过grid布局实现一个食谱查询器
+
+技术栈: 原生JS
+
+总结:
+
+1. grid布局可以应对一些复杂些的场景，参考 [阮一峰Grid布局教程](http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html)
+2. css的数据属性可以用于保存不需要渲染，但是可以用于后续JS处理的属性，比起通过在js中用数据结构保存属性，这种方式可以更好看出数据和某个html元素的绑定，参考 [MDN 使用数据属性](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Howto/Use_data_attributes)
+3. 内联元素的宽高属性和 margin-top, margin-bottom 属性都不生效，宽高实际由内容大小决定，上下margin不会生效，但是在盒模型中可以看到具体值
