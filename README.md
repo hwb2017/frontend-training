@@ -130,3 +130,14 @@ React入门教程
 
 1. Promise的引入解决了回调地狱影响代码可读性的问题，async/await的引入使得可以像书写同步代码一样写异步代码
 2. async和generator配合可以实现一些无限时序流的效果
+
+### 自定义音乐播放器
+网易云课堂原生JS实战，使用audio API自定义音乐播放器
+
+技术栈: 原生JS 
+
+总结:
+
+1. object-fit属性的作用类似background-size，都是设置背景图片的大小和裁剪，设置为 object-fit: cover 时，背景图片能保持原来的宽高比例，并根据容器大小进行裁剪，常用于设置头像的场景，参考 [css3 object-fit详解](https://www.cnblogs.com/ranyonsue/p/9367423.html)
+2. css3伪元素比如 ::after，可以添加选中元素中的最后一个内联子元素，伪元素常见的使用场景有清除浮动、设置一些小图形等，参考 [CSS3 ::before和::after伪元素的实际应用](https://www.cnblogs.com/guangzhou11/p/7360589.html)
+3. 事件监听函数中的this，如果是采用DOM2级的匿名函数的方式，则this指向触发事件的元素；如果采用DOM0级的onXxx函数或者使用DOM2级的箭头函数方式，则this指向全局window对象，参考 [事件监听函数中的this](https://blog.csdn.net/sinat_27088253/article/details/92696313)
