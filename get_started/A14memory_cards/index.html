@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>记忆卡片</title>
+  <link rel="stylesheet" href="style.css">
+  <link 
+    rel="stylesheet" 
+    href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.11.2/css/all.css"
+  />  
+</head>
+<body>
+  <button id="clear" class="clear btn">
+    <i class="fas fa-trash"></i>一键清除
+  </button>
+  <h1>记忆卡片
+    <button id="show" class="btn btn-small">
+      <i class="fas fa-plus"></i>添加新卡片
+    </button>
+  </h1>
+  <div class="cards" id="cards-container">
+    <!-- <div class="card active">
+      <div class="card-front">
+        <p>JavaScript是什么?</p>
+      </div>
+      <div class="card-backward">
+        <p>JavaScript是一种函数优先，轻量级、解释型、即时编译的编程语言</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-front">
+        <p>JavaScript和ECMAScript的关系</p>
+      </div>
+      <div class="card-backward">
+        <p>ECMAScript是一个标准，JavaScript是它的一种实现</p>
+      </div>
+    </div> -->
+  </div>
+  <div class="navigation">
+    <button class="nav-button" id="prev">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <p id="current"></p>
+    <button class="nav-button" id="next">
+      <i class="fas fa-arrow-right"></i>
+    </button>
+  </div>
+  <div class="add-container" id="add-container">
+    <h1>添加新卡片
+      <button id="hide" class="btn btn-small btn-ghost">
+        <i class="fas fa-times"></i>
+      </button>
+    </h1>
+    <div class="form-group">
+      <label for="question">问题</label>
+      <textarea id="question" placeholder="请输入问题..."></textarea>
+    </div>
+    <div class="form-group">
+      <label for="answer">答案</label>
+      <textarea id="answer" placeholder="请输入答案..."></textarea>
+    </div>
+    <button id="add-card" class="btn">
+      <i class="fas fa-plus"></i>添加卡片
+    </button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
+}
+
+h1 {
+  position: relative;
+}
+
+h1 button {
+  position: absolute;
+  right: 0;
+  transform: translate(120%, -50%);
+  z-index: 2;
+}
+
+.btn {
+  background-color: #fff;
+  border: solid 1px #aaa;
+  padding: 10px 15px;
+  border-radius: 3px;
+  font-size: 14px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn-small {
+  font-size: 12px;
+  padding: 5px 10px;
+}
+
+.btn-ghost {
+  border: 0;
+  background-color: transparent;
+}
+
+.clear {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+}
+
+.cards {
+  perspective: 1000px;
+  position: relative;
+  height: 300px;
+  width: 500px;
+  max-width: 100%;
+}
+
+.card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 24px;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease, opacity 0.4s ease;  
+  opacity: 0;
+}
+
+.card.show-answer {
+  transform: rotateX(180deg);
+}
+.card.active {
+  opacity: 1;
+  cursor: pointer;
+  z-index: 10;
+  background-color: #fff;
+}
+
+.card.shift-left {
+  transform: translateX(-50%) rotateY(10deg);
+}
+
+.card.shift-right {
+  transform: translateX(50%) rotateY(10deg);
+}
+
+.card-front,
+.card-backward {
+  backface-visibility: hidden;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.card-front {
+  z-index: 2;
+  transform: rotate(0deg);
+}
+
+.card-backward {
+  transform: rotateX(180deg);
+}
+
+.card-front::after,
+.card-backward::after {
+  content: "\f021  Flip";
+  font-family: "Font Awesome 5 free";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #ddd;
+}
+
+.navigation {
+  display: flex;
+  margin: 20px 0;
+}
+
+.navigation .nav-button {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.navigation p {
+  margin: 0 25px;
+}
+
+.add-container {
+  background-color: #f0f0f0;
+  border-top: 2px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: -1;
+}
+
+.add-container.show {
+  opacity: 1;
+  z-index: 2;
+}
+
+.add-container h3 {
+  margin: 10px 0;
+}
+
+.form-group label {
+  display: block;
+  margin: 20px 0 10px;
+  font-weight: bold;
+}
+
+.form-group textarea {
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 12px;
+  min-width: 500px;
+  max-width: 100%;
+}
