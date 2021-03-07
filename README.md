@@ -171,6 +171,7 @@ while (frontier.length > 0) {
   }
 }
 ```
+参考[让游戏角色快速找到最优路线：详解寻路算法的演进](https://gameinstitute.qq.com/community/detail/119033)
 3. A* 算法是启发式的寻路算法，它和深度/广度搜索优先算法的区别是它用了可排序的数据结构，每次取数据时取优先级最高(离终点更近)的结点，提高寻路效率
 
 ### 信息流博客
@@ -179,6 +180,16 @@ while (frontier.length > 0) {
 技术栈: 原生JS
 
 总结:
+
 1. 要区分函数签名和函数调用，如果某个函数需要作为参数传入，不能通过 函数名(函数参数) 的方式传入，这样会立即调用(闭包的情况除外)
 2. addEventListener 的第二个参数可以传入一个回调函数或者 EventListener对象，执行时会调用该对象的 handleEvent() 方法。传入的回调函数应该具有与handleEvent()方法相同的参数和返回值;也就是说，回调接受一个参数：一个基于Event 的对象，描述已发生的事件，并且它不返回任何内容。参考 [MDN addEventListener](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener)
 3. 防抖与节流的实现，参考[防抖函数的完整实现](https://zhuanlan.zhihu.com/p/268012169)和[防抖与节流简单介绍](https://blog.csdn.net/m0_46157338/article/details/105861928)
+
+### 2D小游戏-打砖块
+网易云课堂原生JS实战，通过Canvas加 requestAnimationFrame 实现2D小游戏-打砖块
+
+技术栈: 原生JS, canvas动画
+
+总结:
+
+1. 通过 requestAnimationFrame重绘canvas的好处在于，相对于setTimeout，requestAnimationFrame在页面未激活状态下不会刷新页面，节省CPU资源；requestAnimationFrame 保证在系统的屏幕刷新间隔内只执行一次，不用自己设置重绘时间，而且可以适配不同设备的屏幕刷新频率，参考[深入理解 requestAnimationFrame](https://blog.csdn.net/VhWfR2u02Q/article/details/79492303)
