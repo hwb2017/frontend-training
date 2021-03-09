@@ -193,3 +193,13 @@ while (frontier.length > 0) {
 总结:
 
 1. 通过 requestAnimationFrame重绘canvas的好处在于，相对于setTimeout，requestAnimationFrame在页面未激活状态下不会刷新页面，节省CPU资源；requestAnimationFrame 保证在系统的屏幕刷新间隔内只执行一次，不用自己设置重绘时间，而且可以适配不同设备的屏幕刷新频率，参考[深入理解 requestAnimationFrame](https://blog.csdn.net/VhWfR2u02Q/article/details/79492303)
+
+### LL算法进行语法分析
+极客大学，使用LL算法构建AST练习
+
+技术栈: 原生JS，数据结构与算法
+
+总结:
+
+1. 词法分析是识别代码中的字符是否属于规定的、可识别的字符集; 语法分析是基于产生式，将代码规约为各种表达式(乘法表达式、加法表达式、四则运算表达式)
+2. LL算法基于的数据结构是栈，每次从栈顶 shift 出一个元素后，判断这个元素(或者包含后续相邻元素)是否满足某个产生式，如果满足，则把它处理为表达式的数据类型后再压入栈，直到栈中只剩一个不能再规约的表达式(四则运算表达式)和EOF为止
