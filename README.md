@@ -229,3 +229,15 @@ while (frontier.length > 0) {
 2. proxy可以拦截对象的原生方法，可以用于写一些底层的库，但是这种元编程的特性可能带来一些不可预测性，不建议用在日常开发中
 3. reactivity api 中，利用 effect 来调用一次回调函数，并记录所有响应了这次事件的元素及其属性(通过proxy的get方法)，保存到全局的callbacks Map中，保存对象，属性，以及它响应的回调函数列表；当之后再改变这些对象的属性时，就会触发相关的回调函数(通过proxy的set方法)，可以借助这点实现数据变更时触发DOM更新的效果
 4. mousemove这类事件更适合绑定到全局的 document 对象上，而不是绑定到某个局部的 dom 对象上，避免出现鼠标移速过快时出现“拖断”现象。可以通过在 mousedown 事件中添加 document 的 mousemove 监听，并在事件结束时移除 document 的 mousemove 监听来实现
+
+### Vue2.x模仿美团外卖移动端
+网易云课堂，Vue实战仿美团外卖移动端
+
+技术栈：Vue2.x
+
+1. 本地模拟接口数据，如果数据规模较小，可以通过自己搭建Koa或者Gin搭建API服务，如果数据规模较大，可以通过引入 mock.js 或者更专业的mock工具，参考[前端开发如何做好本地接口模拟](https://segmentfault.com/a/1190000017775806)
+2. vue 中我们改变数据时不会立即触发视图更新，如果需要实时获取到最新的DOM，这个时候可以手动调用 nextTick，nexTick接收一个回调函数作为参数，是DOM更新后执行该函数，本质上也是一个Vue内部基于JS执行机制实现的异步任务，参考[Vue3官方文档nextTick](https://vue3js.cn/global/nextTick.html)
+3. Vue.set()是Vue2.x中实现追踪数据对象变化的一种办法，Vue中的data对象的所有属性都被vue转为了 getter/setter, 因此运行过程中临时给对象添加属性(这也是Javascript的对象的特性之一，允许运行时增加属性),Vue并不会自动地给它转为getter/setter，所以需要通过Vue.set()的方法来添加该属性，该属性才能是响应式的，参考[Vue.set()方法的使用](https://www.html.cn/qa/vue-js/17144.html)。Vue3之后，由于ES6中的Proxy特性，使得Vue监听对象属性增减更加方便，响应式的实现方法也与Vue2.x不同
+4. 网页中图片加载时，如果图片加载后把原来的父级容器内容“撑开”，则会出现图片闪烁的现象，同时触发重绘和回流也会影响性能。一种好的做法是提前为图片位置预留空间，可以通过padding-top来实现，padding-top的值用百分比来呈现时，基准是容器的宽度，具体参考[利用padding-top/padding-bottom百分比，进行占位和高度自适应](https://www.cnblogs.com/daisygogogo/p/9344727.html)
+5. Vue2.x中父组件调用子组件方法（比如调用子组件的show方法，因为show方法是子组件的可视性的开关，所以定义在子组件上符合内聚性）,由ref和emit/on两种方式，参考[Vue2.xvue父组件中调用子组件的方法](https://www.cnblogs.com/yuzhongyu/p/10825824.html)
+6. 创建BFC的一个作用是可以清除浮动(识别容器内的浮动元素)，参考[前端面试题-BFC(块格式化上下文)](https://segmentfault.com/a/1190000013647777#:~:text=%E5%9D%97%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%96%87%EF%BC%88Block%20Formatting,Context%EF%BC%8CBFC%EF%BC%89%E6%98%AFWeb%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96CSS%E6%B8%B2%E6%9F%93%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%8C%E6%98%AF%E5%B8%83%E5%B1%80%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%94%9F%E6%88%90%E5%9D%97%E7%BA%A7%E7%9B%92%E5%AD%90%E7%9A%84%E5%8C%BA%E5%9F%9F%EF%BC%8C%E4%B9%9F%E6%98%AF%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0%E4%B8%8E%E5%85%B6%E4%BB%96%E5%85%83%E7%B4%A0%E7%9A%84%E4%BA%A4%E4%BA%92%E9%99%90%E5%AE%9A%E5%8C%BA%E5%9F%9F%E3%80%82%202.%E9%80%9A%E4%BF%97%E7%90%86%E8%A7%A3)
