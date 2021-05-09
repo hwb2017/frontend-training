@@ -1,3 +1,2 @@
-import server from './app/server.js';
-
-export default server;
+// 只执行模块，而不引入任何变量
+import './app/server.js';
