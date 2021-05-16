@@ -20,13 +20,13 @@ const getters = {
 }
 
 const actions = {
-	live({commit, state, rootState}) {
+	live({commit, rootState}) {
 		rootState.requesting = true
 		commit(TYPE.LIVE_REQUEST)
 		liveApi.live().then((response) => {
 			rootState.requesting = false
 			commit(TYPE.LIVE_SUCCESS, response.data)
-		}, (error) => {
+		}, () => {
 			rootState.requesting = false
 			commit(TYPE.LIVE_FAILURE)
 		})
@@ -34,7 +34,7 @@ const actions = {
 }
 
 const mutations = {
-	[TYPE.LIVE_REQUEST] (state) {
+	[TYPE.LIVE_REQUEST] () {
 		
 	},
 	[TYPE.LIVE_SUCCESS] (state, live) {
@@ -45,7 +45,7 @@ const mutations = {
 		state.preview = live.preview
 		state.recommendAnchor = live.recommendAnchor
 	},
-	[TYPE.LIVE_FAILURE] (state) {
+	[TYPE.LIVE_FAILURE] () {
 
 	}
 }

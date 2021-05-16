@@ -14,7 +14,7 @@ const getters = {
 
 const actions = {
   // action的第一个参数类似于 this.$store, 是全局的store对象, 可以取得commit,state, rootState(全局的状态，在index.js中定义)  
-  bannerlist({commit, state, rootState}) {
+  bannerlist({commit, rootState}) {
     rootState.requesting = true;
     commit(TYPE.BANNER_LIST_REQUEST);
     // 这里的异步函数错误处理比较简单，在有多个需要错误处理的异步函数时，
@@ -23,7 +23,7 @@ const actions = {
     bannerApi.list().then((response) => {
       rootState.requesting = false;
       commit(TYPE.BANNER_LIST_SUCCESS, response);
-    }, (error) => {
+    }, () => {
       rootState.requesting = false;
       commit(TYPE.BANNER_LIST_FAILURE);
     })
@@ -31,14 +31,14 @@ const actions = {
 }
 
 const mutations = {
-  [TYPE.BANNER_LIST_REQUEST] (state) {
+  [TYPE.BANNER_LIST_REQUEST] () {
 
   },
   // 当banner api 调用成功时，改变bannerlist的状态
   [TYPE.BANNER_LIST_SUCCESS] (state, bannerlist) {
     state.bannerlist = bannerlist.data
   },
-  [TYPE.BANNER_LIST_FAILURE] (state) {
+  [TYPE.BANNER_LIST_FAILURE] () {
     
   }
 }

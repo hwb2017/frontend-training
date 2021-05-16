@@ -3,7 +3,7 @@
     <TopContainer></TopContainer>
     <BHeader></BHeader>
     <BContent :rows="rows"></BContent>
-    <BNavSide :options="options" @change="toggleShowMask">
+    <BNavSide :options="options" @change="toggleShowMask"></BNavSide>
     <div class="wnd-mask" ref="mask" v-show="showMask"></div>
     <router-view/>
   </div>
@@ -47,13 +47,13 @@ export default {
         offsetTop: 0 //距离顶部距离
       }
       return options
-    },
-    methods: {
-      toggleShowMask() {
-        this.showMask = !this.showMask
-      }
     }
-  }
+  },
+  methods: {
+    toggleShowMask() {
+      this.showMask = !this.showMask
+    }
+  }  
 }
 </script>
 

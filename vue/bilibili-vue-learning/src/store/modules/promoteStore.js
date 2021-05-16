@@ -14,13 +14,13 @@ const getters = {
 }
 
 const actions = {
-	promote({commit, state, rootState}) {
+	promote({commit, rootState}) {
 		rootState.requesting = true
 		commit(TYPE.PROMOTE_LIST_REQUEST)
 		promoteApi.promote().then((response) => {
 			rootState.requesting = false
 			commit(TYPE.PROMOTE_LIST_SUCCESS, response)
-		}, (error) => {
+		}, () => {
 			rootState.requesting = false
 			commit(TYPE.PROMOTE_LIST_FAILURE)
 		})
@@ -28,7 +28,7 @@ const actions = {
 }
 
 const mutations = {
-	[TYPE.PROMOTE_LIST_REQUEST] (state) {
+	[TYPE.PROMOTE_LIST_REQUEST] () {
 
 	},
 	[TYPE.PROMOTE_LIST_SUCCESS] (state, response) {
@@ -36,7 +36,7 @@ const mutations = {
 		state.promotelist = response.data
 		state.promoteAd = response.promoteAd
 	},
-	[TYPE.PROMOTE_LIST_FAILURE] (state) {
+	[TYPE.PROMOTE_LIST_FAILURE] () {
 
 	}
 }
