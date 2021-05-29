@@ -1,0 +1,9 @@
+{
+    "include": ["./*"],
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "target": "es5",
+        "noEmitOnError": true,
+        "strictNullChecks": true
+    }
+}
