@@ -241,3 +241,16 @@ while (frontier.length > 0) {
 4. 网页中图片加载时，如果图片加载后把原来的父级容器内容“撑开”，则会出现图片闪烁的现象，同时触发重绘和回流也会影响性能。一种好的做法是提前为图片位置预留空间，可以通过padding-top来实现，padding-top的值用百分比来呈现时，基准是容器的宽度，具体参考[利用padding-top/padding-bottom百分比，进行占位和高度自适应](https://www.cnblogs.com/daisygogogo/p/9344727.html)
 5. Vue2.x中父组件调用子组件方法（比如调用子组件的show方法，因为show方法是子组件的可视性的开关，所以定义在子组件上符合内聚性）,由ref和emit/on两种方式，参考[Vue2.xvue父组件中调用子组件的方法](https://www.cnblogs.com/yuzhongyu/p/10825824.html)
 6. 创建BFC的一个作用是可以清除浮动(识别容器内的浮动元素)，参考[前端面试题-BFC(块格式化上下文)](https://segmentfault.com/a/1190000013647777#:~:text=%E5%9D%97%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%96%87%EF%BC%88Block%20Formatting,Context%EF%BC%8CBFC%EF%BC%89%E6%98%AFWeb%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96CSS%E6%B8%B2%E6%9F%93%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%8C%E6%98%AF%E5%B8%83%E5%B1%80%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%94%9F%E6%88%90%E5%9D%97%E7%BA%A7%E7%9B%92%E5%AD%90%E7%9A%84%E5%8C%BA%E5%9F%9F%EF%BC%8C%E4%B9%9F%E6%98%AF%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0%E4%B8%8E%E5%85%B6%E4%BB%96%E5%85%83%E7%B4%A0%E7%9A%84%E4%BA%A4%E4%BA%92%E9%99%90%E5%AE%9A%E5%8C%BA%E5%9F%9F%E3%80%82%202.%E9%80%9A%E4%BF%97%E7%90%86%E8%A7%A3)
+
+### Vue3.x基于ElementPlus的后台管理系统
+Vue3 Onepiece: vue3-composition-admin
+
+技术栈: Vue3.x TypeScript
+
+1. browserslist 是可以根据项目根目录下的 .browserslistrc 查看应用支持的浏览器信息，也可以调用 browserslist 的API接口，对不同浏览器增加不同的适配JS代码。这部分配置也可以移入babel的target配置中。
+2. .editorconfig 也是一种代码风格规范工具，不同于eslint专注于语法，它更关注缩进、尾部空格、换行符这些所有变成语言通用的代码风格，需要配合IDE工具的editorconfig插件使用
+3. babel中有的插件需要安装为运行时依赖，比如 babel-plugin-transform-runtime & babel-runtime, 它们主要的作用是在低版本ES下提供 Iterator, Promise, Proxy 等ES6 API 的 polyfill(因为babel默认只是转译JS语法，不转译 API), 而同样功能的 babel-polyfill 是在编译时引入的，但会污染全局变量且包的体积较大，因此实际生产环境中还是有这两个runtime的插件比较多，比如 [vue-cli](https://github.com/vuejs/vue-cli/blob/dev/packages/%40vue/babel-preset-app/package.json) 中就要到了这两个插件, 参考[一口气了解babel](https://zhuanlan.zhihu.com/p/43249121)
+4. dotenv可以使得程序在多个环境中获取不同的配置，比如baseurl，参考 [React 项目多环境配置](https://zhuanlan.zhihu.com/p/95855648)
+5. vue cli 中的 webpack 会自动进行 code vendor spliting, 这样可以把频繁变动的业务代码和较少变动的第三方模块分开打包，充分利用浏览器的缓存，减少打包文件的传输大小。其他code spliting 方面的最佳实践还包括按需加载，对于引用多次的代码共同打进一个chunk等，参考[Webpack 大法之 Code Splitting](https://zhuanlan.zhihu.com/p/26710831)
+6. vue cli 创建vue3+typescript的项目后，会在src目录下创建 shims-vue.d.ts 文件，该文件用于告诉typescript如何解析引入的 .vue 文件，即把它认为是一个vue 的 component实例，该文件通过 tsconfig.json 中的 include src/**/*.ts 查找到，最终被typescript编译。
+7. 在 typescript 中引入第三方非typescript编写的库是，还需要引入它们的声明文件才能起作用。一种方法是引入对应的 @types/<模块名>, 另一种方法是通过 declare module 自己编写该模块的声明文件，参考[type和@types](https://zhuanlan.zhihu.com/p/194196536)和[TypeScript官方文档module部分](https://www.tslang.cn/docs/handbook/modules.html)
