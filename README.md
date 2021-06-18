@@ -254,3 +254,8 @@ Vue3 Onepiece: vue3-composition-admin
 5. vue cli 中的 webpack 会自动进行 code vendor spliting, 这样可以把频繁变动的业务代码和较少变动的第三方模块分开打包，充分利用浏览器的缓存，减少打包文件的传输大小。其他code spliting 方面的最佳实践还包括按需加载，对于引用多次的代码共同打进一个chunk等，参考[Webpack 大法之 Code Splitting](https://zhuanlan.zhihu.com/p/26710831)
 6. vue cli 创建vue3+typescript的项目后，会在src目录下创建 shims-vue.d.ts 文件，该文件用于告诉typescript如何解析引入的 .vue 文件，即把它认为是一个vue 的 component实例，该文件通过 tsconfig.json 中的 include src/**/*.ts 查找到，最终被typescript编译。
 7. 在 typescript 中引入第三方非typescript编写的库是，还需要引入它们的声明文件才能起作用。一种方法是引入对应的 @types/<模块名>, 另一种方法是通过 declare module 自己编写该模块的声明文件，参考[type和@types](https://zhuanlan.zhihu.com/p/194196536)和[TypeScript官方文档module部分](https://www.tslang.cn/docs/handbook/modules.html)
+8. 在单页应用中需要给不同路由做权限隔离时(比如login，register可以不用鉴权就可以访问，其他路由需要从vuex获取并校验token), 可以考虑在src目录下放一个 permission.js/ts 文件，它主要依靠从vuex 中获取login时存入的token并解析，然后通过 vue-router的路由守卫功能对用户的请求进行拦截
+9. css-loader 使得开发者可以想导入js模块一样引用css文件，但这是导入一个解析后的js对象，要让css样式自动应用(写入html文件的style标签中)还要引入 style-loader, 参考[css-loader与style-loader的关系原理及作用](https://www.jianshu.com/p/d2470f719fee)
+10. style-resource-loader 可以导入一些公共的css等样式文件，避免每个css文件中都要导入，比如全局的 variable， mixin文件
+11. sass中的变量除了可以用于css引入外，还可以通过export指令用于在js文件中引入，如果是typescript的场景还需要额外增加一个xxx.scss.d.ts的文件，参考[在Typescript和Javascript中使用sass变量](https://mattferderer.com/use-sass-variables-in-typescript-and-javascript)
+12. nomalize.css 是一个npm包，包含一些css样式文件，用于覆盖多家浏览器的默认样式，而统一使用一个默认样式，它是 css reset之类方案的替代品
