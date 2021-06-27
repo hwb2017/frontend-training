@@ -256,10 +256,15 @@ Vue3 Onepiece: vue3-composition-admin
 7. 在 typescript 中引入第三方非typescript编写的库是，还需要引入它们的声明文件才能起作用。一种方法是引入对应的 @types/<模块名>, 另一种方法是通过 declare module 自己编写该模块的声明文件，参考[type和@types](https://zhuanlan.zhihu.com/p/194196536)和[TypeScript官方文档module部分](https://www.tslang.cn/docs/handbook/modules.html)
 8. 在单页应用中需要给不同路由做权限隔离时(比如login，register可以不用鉴权就可以访问，其他路由需要从vuex获取并校验token), 可以考虑在src目录下放一个 permission.js/ts 文件，它主要依靠从vuex 中获取login时存入的token并解析，然后通过 vue-router的路由守卫功能对用户的请求进行拦截
 9. css-loader 使得开发者可以想导入js模块一样引用css文件，但这是导入一个解析后的js对象，要让css样式自动应用(写入html文件的style标签中)还要引入 style-loader, 参考[css-loader与style-loader的关系原理及作用](https://www.jianshu.com/p/d2470f719fee)
-10. style-resource-loader 可以导入一些公共的css等样式文件，避免每个css文件中都要导入，比如全局的 variable， mixin文件
+10. style-resource-loader 可以导入一些css预处理器的公共样式文件，避免每个css文件中都要导入，比如全局的 variable， mixin文件，参考[webpack中使用style-resources-loader
+](https://www.jianshu.com/p/13d9f18faafe)
 11. sass中的变量除了可以用于css引入外，还可以通过export指令用于在js文件中引入，如果是typescript的场景还需要额外增加一个xxx.scss.d.ts的文件，参考[在Typescript和Javascript中使用sass变量](https://mattferderer.com/use-sass-variables-in-typescript-and-javascript)
 12. nomalize.css 是一个npm包，包含一些css样式文件，用于覆盖多家浏览器的默认样式，而统一使用一个默认样式，它是 css reset之类方案的替代品
 13. mock服务用ts编写的话，可以下载 ts-node-dev 包，它的作用是允许在node环境中直接运行ts文件，并且在文件变更时重启服务，但是在生产环境中还是建议把ts编译成js后再运行，参考[我为什么要将Typescript与Express、nodejs一起使用](https://baijiahao.baidu.com/s?id=1617561336289671819&wfr=spider&for=pc)
 14. 在实现一个有多模块的路由控制函数时，可以通过typescript的装饰器功能来封装 router 的 get 和 post 等方法，使代码有更好的业务/模块内聚性，类似于实现gin框架中的路由组功能，参考[TS装饰器初体验，用装饰器管理Koa接口](https://www.jianshu.com/p/f32ab4839b56)
 15. Typescript中类型导入可以通过 import type 来显式声明
 16. es6中的import()函数与node中的require函数都是动态(运行时)加载的，区别是前者是异步加载(返回promise)，后者是同步加载，import()函数也可以放在 async/await 的结构中进行同步加载; import()函数返回的模块对象会作为参数传递给resolve函数，参考[es6 import()函数](https://blog.csdn.net/ixygj197875/article/details/79263912)
+17. webpack-dev-server 可以作为命令行工具使用，核心模块依赖是 webpack 和 webpack-dev-middleware。webapck-dev-server 负责启动一个 express 服务器监听客户端请求；实例化 webpack compiler；启动负责推送 webpack 编译信息的 webscoket 服务器；负责向 bundle.js 注入和服务端通信用的 webscoket 客户端代码和处理逻辑。参考[webpack-dev-server 运行原理](https://jishuin.proginn.com/p/763bfbd4c6f6)
+18. 索引签名可以规定一个object对象中索引/键的数据类型和值的数据类型，参考[TypeScript 笔记（四） 类型字面量](https://zhuanlan.zhihu.com/p/61635691)
+19. TypeScript 自带的工具类型可以获得函数的返回值类型(ReturnType)、参数类型(Parameters)等，参考[TypeScript官网 Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+20. 当需要引入某个文件夹下的所有模块时，可以通过 require.context() 方法，它自带的几个参数用起来也比基于 file.readdirSync 方法去实现批量引入方便得多，参考[require.context()的用法详解](https://blog.csdn.net/pinbolei/article/details/115620728)
