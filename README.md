@@ -259,3 +259,7 @@ Vue3 Onepiece: vue3-composition-admin
 10. style-resource-loader 可以导入一些公共的css等样式文件，避免每个css文件中都要导入，比如全局的 variable， mixin文件
 11. sass中的变量除了可以用于css引入外，还可以通过export指令用于在js文件中引入，如果是typescript的场景还需要额外增加一个xxx.scss.d.ts的文件，参考[在Typescript和Javascript中使用sass变量](https://mattferderer.com/use-sass-variables-in-typescript-and-javascript)
 12. nomalize.css 是一个npm包，包含一些css样式文件，用于覆盖多家浏览器的默认样式，而统一使用一个默认样式，它是 css reset之类方案的替代品
+13. mock服务用ts编写的话，可以下载 ts-node-dev 包，它的作用是允许在node环境中直接运行ts文件，并且在文件变更时重启服务，但是在生产环境中还是建议把ts编译成js后再运行，参考[我为什么要将Typescript与Express、nodejs一起使用](https://baijiahao.baidu.com/s?id=1617561336289671819&wfr=spider&for=pc)
+14. 在实现一个有多模块的路由控制函数时，可以通过typescript的装饰器功能来封装 router 的 get 和 post 等方法，使代码有更好的业务/模块内聚性，类似于实现gin框架中的路由组功能，参考[TS装饰器初体验，用装饰器管理Koa接口](https://www.jianshu.com/p/f32ab4839b56)
+15. Typescript中类型导入可以通过 import type 来显式声明
+16. es6中的import()函数与node中的require函数都是动态(运行时)加载的，区别是前者是异步加载(返回promise)，后者是同步加载，import()函数也可以放在 async/await 的结构中进行同步加载; import()函数返回的模块对象会作为参数传递给resolve函数，参考[es6 import()函数](https://blog.csdn.net/ixygj197875/article/details/79263912)
