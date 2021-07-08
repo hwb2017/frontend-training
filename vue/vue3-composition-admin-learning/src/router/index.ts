@@ -1,25 +1,64 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../views/Home.vue'
+import Layout from '@/layout/Index.vue'
 
-const routes: Array<RouteRecordRaw> = [
+const constantFiles = require.context('./constantModules', true, /\.ts$/)
+let constantModules: Array<RouteRecordRaw> = []
+constantFiles.keys().forEach((key) => {
+  if (key === './index.ts') return
+  constantModules = constantModules.concat(constantFiles(key).default)
+})
+
+const permissionFiles = require.context('./permissionModules', true, /\.ts$/)
+let permissionModules: Array<RouteRecordRaw> = []
+permissionFiles.keys().forEach((key) => {
+  if (key === './index.ts') return
+  permissionModules = permissionModules.concat(permissionFiles(key).default)
+})
+
+export const constantRoutes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/redirect',
+    component: Layout,
+    meta: { hidden: true },
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import(/* webpackChunkName: "redirect" */ '@/views/redirect/Index.vue')
+      }
+    ]
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/Index.vue'),
+        name: 'Dashboard',
+        meta: {
+          title: 'dashboard',
+          icon: '#icondashboard',
+          affix: true
+        }
+      }
+    ]
+  },
+  ...constantModules
 ]
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
+export const permissionRoutes: Array<RouteRecordRaw> = [
+  ...permissionModules
+]
+
+const router = createRouter ({
+  history: createWebHistory(),
+  routes: constantRoutes
 })
+
+export function resetRouter () {
+  const newRouter = router;
+  (router as any).matcher = (newRouter as any).matcher
+}
 
 export default router

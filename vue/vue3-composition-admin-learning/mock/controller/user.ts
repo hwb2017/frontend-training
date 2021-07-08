@@ -5,7 +5,7 @@ import * as Koa from 'koa';
 @prefix('/user')
 export default class User {
   @post('/login')
-  login(ctx: any) {
+  async login(ctx: any) {
     const { username } = ctx.request.body;
     for (const user of userList) {
       if (user.username === username) {
@@ -18,13 +18,13 @@ export default class User {
   }
 
   @get('/userInfo')
-  getUserInfo(ctx: Koa.Context) {
+  async getUserInfo(ctx: Koa.Context) {
     let token = ctx.request.header.token
     return token === 'admin-token' ? userList[0] : userList[1]
   }
 
   @get('/getUsers')
-  getUsers(ctx: Koa.Context) {
+  async getUsers(ctx: Koa.Context) {
     const { name } = ctx.query;
     const users = userList.filter(user => {
       const lowerCaseName = user.name.toLowerCase();

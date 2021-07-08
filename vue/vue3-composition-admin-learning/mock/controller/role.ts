@@ -5,7 +5,7 @@ import faker from 'faker';
 @prefix('/roles')
 export default class Roles {
   @get('/getRoles')
-  getRoles() {
+  async getRoles() {
     return {
       total: roles.length,
       items: roles
@@ -13,14 +13,14 @@ export default class Roles {
   }
 
   @put('/createRole')
-  createRole() {
+  async createRole() {
     return {
       key: faker.datatype.number({ min: 3, max: 10000 })
     }
   }
 
   @post('/updateRole')
-  updateRole(ctx: any) {
+  async updateRole(ctx: any) {
     const { role } = ctx.request.body;
     return {
       role
@@ -28,12 +28,12 @@ export default class Roles {
   }
 
   @del('/deleteRole')
-  deleteRole() {
+  async deleteRole() {
     return 'delete success'
   }
 
   @get('/getRoutes')
-  getRoutes() {
+  async getRoutes() {
     return {
       routes
     }

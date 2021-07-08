@@ -46,7 +46,7 @@ for (let i = 0; i < articleCount; i++) {
 @prefix('/article')
 export default class Article {
   @post('/articles')
-  getArticles(ctx: any) {
+  async getArticles(ctx: any) {
     const { importance, type, title, page = 1, limit = 20, sort } = ctx.request.body;
     let mockList = articleList.filter(item => {
       if (importance && item.importance !== +importance) return false;
@@ -66,7 +66,7 @@ export default class Article {
   }
 
   @get('/articleInfo')
-  getArticle(ctx: any) {
+  async getArticle(ctx: any) {
     const { id } = ctx.query;
     for (const article of articleList) {
       if (article.id.toString() === id) {

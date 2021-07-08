@@ -268,3 +268,18 @@ Vue3 Onepiece: vue3-composition-admin
 18. 索引签名可以规定一个object对象中索引/键的数据类型和值的数据类型，参考[TypeScript 笔记（四） 类型字面量](https://zhuanlan.zhihu.com/p/61635691)
 19. TypeScript 自带的工具类型可以获得函数的返回值类型(ReturnType)、参数类型(Parameters)等，参考[TypeScript官网 Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
 20. 当需要引入某个文件夹下的所有模块时，可以通过 require.context() 方法，它自带的几个参数用起来也比基于 file.readdirSync 方法去实现批量引入方便得多，参考[require.context()的用法详解](https://blog.csdn.net/pinbolei/article/details/115620728)
+21. vue-router库中，组件要从当前路由获取参数的话，可以从 $route或者 useRoute() 方法来获取，或者使用props属性的布尔模式或者函数模式来获取路由中的参数或者查询，参考[Vue-Router4.x官方文档](https://next.router.vuejs.org/zh/guide/essentials/passing-props.html)
+22. vue-router中所有的route路由记录都是挂载在matcher对象上的，可以新建一个 router，用它的matcher对象替换原有router实例的matcher对象，达到重置路由的效果。重置路由主要用在不同权限不同路由规则的场景中，当用户切换权限角色时，可以调用resetRouter方法把动态添加的权限相关的路由记录清除掉。参考[vue-router 源码探究——路由重置实现](https://set.sh/post/190626-how-to-reset-routes-in-the-vue-router)
+23. vuex中的类型泛型主要是围绕state来的，比如Store类型中传入state来定义根状态需要包含哪些数据字段，Module类型中传入state和rootState来定义模块命名空间中需要包含哪些数据字段，并引入RootState供getter和action作为参数类型，参考vuex的类型定义文件。 
+```typescript
+export interface Module<S, R> {
+  namespaced?: boolean;
+  state?: S | (() => S);
+  getters?: GetterTree<S, R>;
+  actions?: ActionTree<S, R>;
+  mutations?: MutationTree<S>;
+  modules?: ModuleTree<R>;
+}
+```
+24. TypeScript中的declare module，不仅可以给未提供类型声明文件的模块定义类型，还可以给已经提供类型声明文件，但是不全的模块来定义类型，这被称为模块补充(module augmentation)。参考[Vue 组件中 $store属性的类型声明](https://next.vuex.vuejs.org/zh/guide/typescript-support.html#vue-%E7%BB%84%E4%BB%B6%E4%B8%AD-store-%E5%B1%9E%E6%80%A7%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E)
+25. TypeScript中，可以使用ObjectConstructor来表示一个对象实例类型，如果要访问对象的原型方法，可以使用Object接口，参考[一文读懂 TS 中 Object, object, {} 类型之间的区别](https://cloud.tencent.com/developer/article/1610691)
