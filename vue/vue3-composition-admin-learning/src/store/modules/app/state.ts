@@ -1,5 +1,5 @@
-import { getLocale } from "@/locales";
-import { getSidebarStatus, getSize } from "@/utils/cookies";
+import { getLocale } from '@/locales'
+import { getSidebarStatus, getSize } from '@/utils/cookies'
 
 export enum DeviceType {
   Mobile,

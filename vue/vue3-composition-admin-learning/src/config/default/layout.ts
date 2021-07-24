@@ -17,7 +17,7 @@ const layoutSettings: LayoutSettings = {
   showTagsView: true,
   fixedHeader: false,
   showSidebarLogo: true,
-  sidebarTextTheme: true,
+  sidebarTextTheme: true
 }
 
 export default layoutSettings

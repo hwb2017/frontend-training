@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>混合图表</div>
 </template>
 
 <script lang="ts">

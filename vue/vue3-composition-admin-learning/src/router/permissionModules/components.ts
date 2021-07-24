@@ -16,7 +16,7 @@ const componentsRouter: Array<RouteRecordRaw> = [
         path: 'tinymce',
         component: () => import(/* webpackChunkName: "tinymce" */ '@/views/components-demo/TinymceModulesDemo.vue'),
         name: 'TinymceDemo',
-        meta: {title: 'tinymce'}
+        meta: { title: 'tinymce' }
       },
       {
         path: 'back-to-top',

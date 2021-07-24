@@ -1,4 +1,4 @@
-import { RouteRecordRaw } from "vue-router";
+import { RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/Index.vue'
 
 const ProfileRouter: Array<RouteRecordRaw> = [

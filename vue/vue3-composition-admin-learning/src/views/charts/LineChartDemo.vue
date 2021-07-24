@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>折线图</div>
 </template>
 
 <script lang="ts">

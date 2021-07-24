@@ -1,9 +1,9 @@
-import { ContentType, Device } from "@/constant/headers";
-import { InfoShowType } from "@/constant/network";
-import settings from "./setting.config";
-
+import { ContentType, Device } from '@/constant/headers'
+import { InfoShowType } from '@/constant/network'
+import settings from './setting.config'
 
 interface Headers {
+  [key: string]: unknown
   token: string
   contentType: string
   version: string
@@ -22,7 +22,7 @@ export interface NetWorkConfig {
   timeout?: number
   loading?: false
   errorShowType?: InfoShowType
-  header?: {}
+  header?: Record<string, unknown>
 }
 
 const networkConfig: NetWorkConfig = {

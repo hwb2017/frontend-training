@@ -1,18 +1,16 @@
 import { RootObject } from '@/model/rootObject'
 import { UserInfoModel, Users } from '@/model/userModel'
 import { LoginModel } from '@/model/loginModel'
-import { RequestParams, ContentType, AxiosRequestConfig } from 'axios'
+import { AxiosRequestConfig } from 'axios'
 import request from '@/utils/request'
 
-declare module 'axios' {
-  enum ContentType {
-    form = 'application/x-www-form-urlencoded',
-    json = 'application/json; charset=utf-8',
-    multipart = 'multipart/form-data'
-  }
-  interface RequestParams {
-    [index: string]: string
-  }
+enum ContentType {
+  form = 'application/x-www-form-urlencoded',
+  json = 'application/json; charset=utf-8',
+  multipart = 'multipart/form-data'
+}
+interface RequestParams {
+  [index: string]: string
 }
 
 export const loginRequest = (userInfo: RequestParams) => {

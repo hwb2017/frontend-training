@@ -283,3 +283,10 @@ export interface Module<S, R> {
 ```
 24. TypeScript中的declare module，不仅可以给未提供类型声明文件的模块定义类型，还可以给已经提供类型声明文件，但是不全的模块来定义类型，这被称为模块补充(module augmentation)。参考[Vue 组件中 $store属性的类型声明](https://next.vuex.vuejs.org/zh/guide/typescript-support.html#vue-%E7%BB%84%E4%BB%B6%E4%B8%AD-store-%E5%B1%9E%E6%80%A7%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E)
 25. TypeScript中，可以使用ObjectConstructor来表示一个对象实例类型，如果要访问对象的原型方法，可以使用Object接口，参考[一文读懂 TS 中 Object, object, {} 类型之间的区别](https://cloud.tencent.com/developer/article/1610691)
+26. defineComponent的作用，实际上就是返回传递给它的对象，或者把传递给它的函数转为对象，主要是能够适配在不同参数形式下的类型推断，比如有无 props 的场景。参考[Vue3 - defineComponent解决了什么？](https://blog.csdn.net/qq_36157085/article/details/109498473)
+27. 按需引入组件库可借助 babel-plugin-component 组件，参考[浅析babel-plugin-component](https://juejin.cn/post/6844904077634060302)
+28. 在vue的单文件组件中，template标签常用于条件渲染分组和复杂列表项的渲染，它是由HTML5引进的新标签元素，参考[vue中的template标签](https://zhuanlan.zhihu.com/p/114246194)
+29. web安全(隐私)问题，在页面中通过新标签页(target=_blank)的形式打开外链时,可以设置a标签的rel值为 noreferrer noopener,保护源站的信息不被获取，参考[聊聊 rel=noopener](https://www.cnblogs.com/10yearsmanong/p/12222786.html)
+30. composition api 中，setup方法接受两个参数，一个是props，因为setup的执行时期是在组件解析了props之后，因此可以获取props；第二个参数是 setupContext, 它包含三个成员 attrs, emit, slot，用以代替 this.$attrs, this.$emit, this.$slot, 因为setup是在组件实例创建完成之前执行的，没有this。参考[熬夜总结vue3中setUp函数的2个参数详解](https://www.cnblogs.com/IwishIcould/p/14952332.html)
+31. vue3 的 emit 的流程是子组件触发一个自定义事件，父组件监听，并调用父组件上的方法来handle，这样做的好处是，如果handle函数中设计到对全局 store 的访问，而且父组件中其他函数已经用到了store，那么子组件只要触发父组件的回调即可，不在在子组件中再引入 store
+32. 由于vue router中存在不同路由路径复用同一组件的情况，复用时组件后续的 mount 相关声明周期将不再执行，解决方法是给 router-view 添加 key 属性，并执行 route.path (有的情况也可以使用route.fullPath，考虑不同的查询字符串情况), 参考[VUE router-view key 属性解释](https://www.cnblogs.com/yg_zhang/p/10867617.html)

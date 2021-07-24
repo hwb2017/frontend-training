@@ -39,3 +39,5 @@ const tableRouter: Array<RouteRecordRaw> = [
     ]
   }
 ]
+
+export default tableRouter

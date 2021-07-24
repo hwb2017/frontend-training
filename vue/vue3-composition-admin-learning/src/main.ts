@@ -6,6 +6,7 @@ import '@/assets/iconfont/iconfont.css'
 import '@/styles/index.scss'
 import 'normalize.css'
 import { loadAllPlugins } from './plugins'
+import '@/permission'
 
 const app = createApp(App)
 // 加载所有插件
