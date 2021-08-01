@@ -297,3 +297,4 @@ export interface Module<S, R> {
 技术栈: Vue3.x TypeScript
 1. 引入npm包时，具体引入哪个entry文件，需要看npm包的package.json中的main，module，browser字段是怎么定义的，还需要看打包工具的构建目标是啥(比如webpack的默认构建模板target是web,在浏览器中运行的web应用)，具体是当构建目标为web时，默认的加载判断顺序是 browser+mjs > module > browser + cjs > main, 参考[package.json中你还不清楚的browser，module，main 字段优先级](https://www.cnblogs.com/h2zZhou/p/12929472.html)
 2. npm pubilish 时的文件包含规则，参考[npm 发布如何忽略指定的文件](https://blog.csdn.net/terrychinaz/article/details/112976268)
+3. element-plus 和 ant-design-vue 中package.json main/module 对应的入口文件都是 esm 规范的，前者基于 rollup 对每一个组件打包，后者通过 gulp 统一对所有的组件模块进行处理; unpkg 对应的入口文件都是通过webpack打的 umd 模块规范的包。在css分包和压缩方面，二者都选用 mini-css-extract-plugin 和 css-minimizer-webpack-plugin。按需加载方面前者使用 babel-plugin-component, 后者使用 babel-plugin-import, 没有本质区别，前者是从后者 fork 出来的一个分支
