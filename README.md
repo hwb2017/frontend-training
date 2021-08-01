@@ -290,3 +290,10 @@ export interface Module<S, R> {
 30. composition api 中，setup方法接受两个参数，一个是props，因为setup的执行时期是在组件解析了props之后，因此可以获取props；第二个参数是 setupContext, 它包含三个成员 attrs, emit, slot，用以代替 this.$attrs, this.$emit, this.$slot, 因为setup是在组件实例创建完成之前执行的，没有this。参考[熬夜总结vue3中setUp函数的2个参数详解](https://www.cnblogs.com/IwishIcould/p/14952332.html)
 31. vue3 的 emit 的流程是子组件触发一个自定义事件，父组件监听，并调用父组件上的方法来handle，这样做的好处是，如果handle函数中设计到对全局 store 的访问，而且父组件中其他函数已经用到了store，那么子组件只要触发父组件的回调即可，不在在子组件中再引入 store
 32. 由于vue router中存在不同路由路径复用同一组件的情况，复用时组件后续的 mount 相关声明周期将不再执行，解决方法是给 router-view 添加 key 属性，并执行 route.path (有的情况也可以使用route.fullPath，考虑不同的查询字符串情况), 参考[VUE router-view key 属性解释](https://www.cnblogs.com/yg_zhang/p/10867617.html)
+
+### 自己打造组件库 cloud-console-design
+参照aws的组件API文档，自己动手实现一个组件库
+
+技术栈: Vue3.x TypeScript
+1. 引入npm包时，具体引入哪个entry文件，需要看npm包的package.json中的main，module，browser字段是怎么定义的，还需要看打包工具的构建目标是啥(比如webpack的默认构建模板target是web,在浏览器中运行的web应用)，具体是当构建目标为web时，默认的加载判断顺序是 browser+mjs > module > browser + cjs > main, 参考[package.json中你还不清楚的browser，module，main 字段优先级](https://www.cnblogs.com/h2zZhou/p/12929472.html)
+2. npm pubilish 时的文件包含规则，参考[npm 发布如何忽略指定的文件](https://blog.csdn.net/terrychinaz/article/details/112976268)
