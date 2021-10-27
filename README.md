@@ -307,3 +307,49 @@ export interface Module<S, R> {
 10. 在有一定规模的CSS文件中，可以使用 B.E.M. 规范来组织css代码，element-plus 的 theme-chalk 就是使用这种规范，参考[如何看待 CSS 中 BEM 的命名方式？](https://www.zhihu.com/question/21935157)
 11. scss 中有个颜色相关的函数 mix，可以通过两种颜色并设置第一种颜色所占的比例来混合新颜色，比较适合设置元素在 hover 或 active 时的短暂明暗变化，参考[Sass:RGB颜色函数-Mix()函数](https://www.cnblogs.com/qjuly/p/9125219.html)
 12. scss 中的变量可以结合 css3 中的变量来使用，css3的变量支持在运行时被 js 所改变，适合用于设置全局主题或风格相关的变量，参考[利用css3的var()实现运行时改变scss的变量值](https://blog.csdn.net/weixin_44392565/article/details/85755592)
+13. -webkit-appearance: none 私有属性可以用于去除某个控件在浏览器中的默认样式，由开发者来统一确定样式，参考[CSS：关于“-webkit-appearance: none”样式使用问题](https://blog.csdn.net/u012518659/article/details/49913999#:~:text=-webkit-appearance%20%E6%98%AF%E4%B8%80%E4%B8%AA%20%E4%B8%8D%E8%A7%84%E8%8C%83%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%88unsupported%20WebKit,property%EF%BC%89%EF%BC%8C%E5%AE%83%E6%B2%A1%E6%9C%89%E5%87%BA%E7%8E%B0%E5%9C%A8%20CSS%20%E8%A7%84%E8%8C%83%E8%8D%89%E6%A1%88%E4%B8%AD%E3%80%82%20%E6%AD%A4%E5%B1%9E%E6%80%A7%E9%9D%9E%E6%A0%87%E5%87%86%E4%B8%94%E6%B8%B2%E6%9F%93%E6%95%88%E6%9E%9C%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E4%B8%8D%E5%90%8C%EF%BC%8C%E6%9C%89%E4%BA%9B%E5%B1%9E%E6%80%A7%E5%80%BC%E7%94%9A%E8%87%B3%E4%B8%8D%E6%94%AF%E6%8C%81%EF%BC%8C%E8%AF%B7%E6%85%8E%E7%94%A8%E3%80%82%20webkit%E6%98%AF%E4%B8%80%E7%A7%8D%E6%B5%8F%E8%A7%88%E5%99%A8%E7%A7%81%E6%9C%89%E5%89%8D%E7%BC%80%2C%E6%98%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E6%96%B0css%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E6%8F%90%E5%89%8D%E6%94%AF%E6%8C%81-webkit-%E5%89%8D%E7%BC%80%E6%98%AF%E6%8C%87webkit%E5%86%85%E6%A0%B8%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%2C%E4%B8%8E%E4%B9%8B%E7%9B%B8%E5%90%8C%E7%9A%84%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E7%A7%81%E6%9C%89%E5%89%8D%E7%BC%80-moz-%2C-moz-%E6%98%AF%E6%8C%87Firefox%E5%86%85%E6%A0%B8%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8)
+14. pointer-events: none 属性可以使元素避免成为鼠标事件的目标，针对鼠标事件可以达到禁用元素的目的，同时不像 cursor: not-allowed 那样在鼠标 hover 时会产生禁用图标，适合用于元素 loading/pending 状态
+15. node.js 中json文件有 fs.readFile, require, import (esm) 三种导入方式，import 方式导入仍处于实验阶段，参考[How to import JSON files in ES modules](https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules-node-js/)
+16. typescript 中设置 noImplicitAny 为 false，可以将未设置类型的变量的类型置为 any，减少一部分类型声明的工作，参考[我应该使用noImplicitAny TypeScript编译器标志吗](https://segmentfault.com/a/1190000019768261)
+17. 使用 autoprefixer 可以给css属性加上适配多种浏览器的前缀，参考[AutoPrefixer](https://www.jianshu.com/p/f5b0b92e6b0f)
+18. rollup 中可以使用 rollup-plugin-postcss 来单独处理css, 依赖的sass预处理器应该下载sass(dart-sass)，而不是node-sass, 参考[rollup-plugin-postcss npm文档](https://www.npmjs.com/package/rollup-plugin-postcss/v/2.4.1) 和 [rollup从入门到打包一个按需加载的组件库](https://juejin.cn/post/6934698510436859912#heading-6)
+19. rollup 和 webpack 这样适用于将那些有较少入口文件、能够形成依赖图的所有文件打包成少数几个文件，如果是有多个目录需要单独打包，则使用 gulp 这样的构建工具会更灵活
+20. package.json 中的style字段可以指向npm包中的css文件，postcss 或 sass 这样的css预处理器都可以从下载的npm包中根据 style 字段导入样式，参考[PACKAGE.JSON "STYLE" ATTRIBUTE](https://jaketrent.com/post/package-json-style-attribute)
+21. 组件库项目通过cdn方式全量引用时可以进行代码压缩，如果是提供给项目引用的话，则没必要进行代码压缩。因为混淆后的代码无法根据组件名进行按需加载，而且引用组件库的Web应用项目最终也会进行代码压缩，没必要在组件库层面就压缩。
+22. 目前主要的图标方案有字体图标和SVG图标，SVG图标的主要好处是1. 通过内联SVG代码的方式，减少一次http请求(字体图标需要额外下载字体库) 2. 更细粒度的颜色和动画控制(字体图标只能做整体的颜色转换和动画效果) 3.更好的稳定性，字体图标可能因为加载中或加载错误，导致所有图标都显示黑框。主要确定是对旧客户端的兼容性不太好，需要搭配字体图标作为降级方案。参考[Icon Fonts vs SVG – Clash of the Icons](https://www.lambdatest.com/blog/its-2019-lets-end-the-debate-on-icon-fonts-vs-svg-icons/)
+23. iconfont 字体文件下载的时机，不同浏览器有不同行为，IE 8浏览器是由定义font-face就下载，Firefox和IE9是在引用 font-family 样式时下载，Chrome和Safari是在有文字内容匹配时才下载。加载图标字体过程中还有可能出现FOIT(Flash of Invisible Text)和FOUT(Flash of Unstyled Text)的现象。参考[CSS @font-face性能优化](https://zhuanlan.zhihu.com/p/67616144)
+24. 组件库中如果要给用户提供几个预置的样式，可以通过 -normal、-primary 等variant形式的样式，如果要给用户更大的自由度，可以传入color size等变量来改变样式，可以封装css variable 的接口给用户，参考[In vue.js component, how to use props in css?](https://stackoverflow.com/questions/42872002/in-vue-js-component-how-to-use-props-in-css)
+25. node child_process 可以通过异步的方式获取执行程序的返回码和输出，并执行回调函数，参考[Node.js spawn child process and get terminal output live](https://stackoverflow.com/questions/14332721/node-js-spawn-child-process-and-get-terminal-output-live)
+26. webpack中，sideEffects 是模块/文件级别的dce(死代码清除), usedExports 是语句级别的dce，前者比后者更容易处理也更高效，一般只要不是polyfill或者shim类型的包都可以配置为 sideEffects: false，表示自己是无副作用的，未引用的模块、子树可以直接删除，参考[Webpack官方文档-TreeShaking](https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free)
+27. vue3 组合式API中，组件的状态和方法基本都在setup函数中声明，都可以互相访问，不用像选项式API中那样通过this访问组件的状态和方法，因此组合式API中不建议使用 getCurrentInstance 代替 this 获取内部组件实例上的状态属性和方法，参考[关于Vue3获取当前组件实例的 getCurrentInstance 方法的补充](https://blog.csdn.net/l_ppp/article/details/110290182)
+28. vue 的 provide/inject 机制除了用于祖孙组件之间通信以外，还可以用于限制某个组件只能作为其他组件的子组件使用，比如 element plush 中标签页组件中，tab bar 组件中会判断 tab 组件是否在它的外层组件中:
+```javascript
+    const rootTabs = inject<RootTabs>('rootTabs')
+    if (!rootTabs) {
+      throw new Error(`ElTabBar must use with ElTabs`)
+    }
+```
+29. vue 中父组件可以把自己的方法通过props转递给子组件，使子组件可以调用父组件的方法，达到改变组件级别共享状态的目的，父组件可以通过模板引用 ref 的方式访问子组件实例并调用子组件方法，改变子组件的状态
+30. vue 的 ref 属性处理用于引用子组件外，还可以用于用于模板/渲染函数内的原生html元素，可以获取元素的dom属性，比如长宽高等
+31. 组件性能优化的技巧之避免无意义的渲染，vue中组件或计算属性依赖的响应式属性变更时即会触发依赖的重新收集和视图重新渲染等，但是有时候这会没有意义，比如计算属性的计算过程从 1 + 1 变为 2 + 0, 但是计算属性的值没有变化，此时不应该再继续派发更新。可以缓存计算属性之前的值跟最新的值做比较，如果没有变化则不派发更新。vue中的计算属性和element plus 中的标签页组件的pane组件更新都有做此类优化
+32. typescript 中的类型守卫可以用于缩小变量的类型取值，在类型确定的 if/else 语句块中，可以直接把变量当作确定的类型来使用，或者通过 return/throw 等语句，使得 if/else 语句块之外，变量的类型也被永久的缩小，参考 [Typescript Type Guards](https://www.typescripttutorial.net/typescript-tutorial/typescript-type-guards/#:~:text=%20TypeScript%20Type%20Guards%20%201%20typeof.%20First%2C,can%20also%20use%20it%20as%20a...%20More%20)
+33. 对于页面中的可聚焦元素，除了默认的通过鼠标点击和tab键获取和失去焦点外，还要支持对 window.focus 和 window.blur 事件的监听，使得页面中的元素可以在浏览器窗口转移到后台时失焦，转移到前台时设置focusable: true 之类的开关获得聚焦能力；支持 document.visibilityState 事件的监听，使得页面中的元素可以在浏览器标签页不活跃时失焦，标签页活跃时设置focusable: true 之类的开关获得聚焦能力
+34. vue 的 inheritAttrs 用于选择是否继承父组件上传递的非props的属性，默认是继承，对于一些避免接收所有用户输入的组件，可以把 inheritAttrs 设置为 false，然后在组件内通过 this.$attrs.xxx 来访问固定的几个属性
+35. css3 变量作为局部变量时是具有作用域的，且只有所属的选择器及其后代选择器内生效，可以配合 calc 和 counter 来实现实时地对css属性进行更新，类似函数调用，参考 [CSS var变量的局部作用域（继承）特性](https://www.zhangxinxu.com/wordpress/2019/01/css-var-%e5%8f%98%e9%87%8f-%e5%b1%80%e9%83%a8/)
+36. javascript 的 delete 操作符可以删除对象的key，但是对象的key对应的value如果是引用类型的话，它所占用的内存不会自动释放，因此更好的办法是在删除key之前先通过 `object[key] = null` 的方式释放对 value 的引用，参考 [MDN delete操作符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/delete)
+37. stopImmediatePropagation 可以阻止在同一元素上后续事件监听函数的执行，而 stopPropagation 阻止事件在父级容器上的传播
+38. typescript 设置函数的返回值类型为 void 时，只有在函数调用时通过 void 进行注解才有用，在函数 interface 声明中注解没有用
+```typescript
+// void注解无效
+export interface CFormContext {
+  registerLabelWidth?(width: number, oldWidth: number): void
+  deregisterLabelWidth: (width: number) => void
+}
+// void注解有效
+const cFormContext: CFormContext = {
+  registerLabelWidth(width: numbser, oldWidth: number): void {
+    return
+  }
+}
+```
+39. 组件内部各元素的联动更新可以通过状态和状态的设置函数来解耦，比如 states.XXX 和 setXXX, 这样子元素的更新逻辑可以通过 setXXX 统一暴露，可以多出复用，父元素不用知道它的内部实现。同时也把状态的更新(setXXX)和dom的更新解耦了
