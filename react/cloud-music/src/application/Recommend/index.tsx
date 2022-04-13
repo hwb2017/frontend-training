@@ -1,6 +1,8 @@
 import React from 'react';
 import Slider from '../../components/slider';
 import RecommendList from '../../components/list';
+import Scroll from '../../components/scroll';
+import { Content } from './style';
 
 function Recommend() {
   // mock数据
@@ -16,10 +18,14 @@ function Recommend() {
     }
   });
   return (
-    <div>
-      <Slider bannerList={bannerList} />
-      <RecommendList recommendList={recommendList} />
-    </div>
+    <Content>
+      <Scroll>
+        <div>
+          <Slider bannerList={bannerList} />
+          <RecommendList recommendList={recommendList} />
+        </div>
+      </Scroll>
+    </Content>
   )
 }
 

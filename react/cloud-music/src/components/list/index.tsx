@@ -5,6 +5,7 @@ import {
   List
 } from './style';
 import { formatCount } from '../../api/utils';
+import type { ReactElement } from 'react'; 
 
 interface Recommend {
   id: number,
@@ -14,10 +15,11 @@ interface Recommend {
 }
 
 interface ListProps {
-  recommendList: Recommend[]
+  recommendList: Recommend[],
+  children?: ReactElement
 }
 
-const RecommendList: React.FC<ListProps> = (props) => {
+const RecommendList = (props: ListProps) => {
   return (
     <ListWrapper>
       <h1 className='title'> 推荐歌单 </h1>

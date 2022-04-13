@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { SliderContainer } from './style';
 import Swiper, { Pagination, Autoplay } from 'swiper';
 import 'swiper/css/bundle';
+import type { ReactElement } from 'react';
 
 Swiper.use([Pagination, Autoplay]);
 
 export interface SliderProps {
-  bannerList: { imageUrl: string }[]
+  bannerList: { imageUrl: string }[],
+  children?: ReactElement
 }
 
-const Slider: React.FC<SliderProps> = (props) => {
+const Slider = (props: SliderProps) => {
   const [sliderSwiper, setSliderSwiper] = useState<Swiper | null>(null);
   const { bannerList } = props;
 
