@@ -3,11 +3,12 @@ import { SliderContainer } from './style';
 import Swiper, { Pagination, Autoplay } from 'swiper';
 import 'swiper/css/bundle';
 import type { ReactElement } from 'react';
+import type { Banner } from '../../api/request';
 
 Swiper.use([Pagination, Autoplay]);
 
 export interface SliderProps {
-  bannerList: { imageUrl: string }[],
+  bannerList: Banner[],
   children?: ReactElement
 }
 

@@ -6,13 +6,7 @@ import {
 } from './style';
 import { formatCount } from '../../api/utils';
 import type { ReactElement } from 'react'; 
-
-interface Recommend {
-  id: number,
-  picUrl: string,
-  playCount: number,
-  name: string,
-}
+import type { Recommend } from '../../api/request';
 
 interface ListProps {
   recommendList: Recommend[],
