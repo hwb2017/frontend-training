@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const ScrollContainer = styled.div`
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow: scroll;
 `
 
 export default ScrollContainer;
