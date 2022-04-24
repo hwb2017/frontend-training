@@ -66,3 +66,4 @@ export default recommendSlice.reducer;
 
 export const selectBannerList = (state: RootState) => state.recommend.bannerList;
 export const selectRecommendList = (state: RootState) => state.recommend.recommendList;
+export const selectRecommendStatus = (state: RootState) => state.recommend.recommendStatus;

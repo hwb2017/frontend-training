@@ -9,7 +9,9 @@ import {
   getRecommendList,
   selectBannerList,
   selectRecommendList,
+  selectRecommendStatus,
 } from './store/recommendSlice';
+import Loading from '../../baseUI/loading';
 
 function Recommend() {
   // mock数据
@@ -26,11 +28,17 @@ function Recommend() {
   // });
   const bannerList = useAppSelector(selectBannerList);
   const recommendList = useAppSelector(selectRecommendList);
+  const recommendStatus = useAppSelector(selectRecommendStatus);
+  const isRecommendLoading = recommendStatus === 'loading';
   const dispatch = useAppDispatch();
   
   useEffect(() => {
-    dispatch(getBannerList());
-    dispatch(getRecommendList());
+    if (bannerList.length == 0) {
+      dispatch(getBannerList());
+    }
+    if (recommendList.length == 0) {
+      dispatch(getRecommendList());
+    }
     // eslint-disable-next-line
   }, []);
 
@@ -42,6 +50,7 @@ function Recommend() {
           <RecommendList recommendList={recommendList} />
         </div>
       </Scroll>
+      { isRecommendLoading ? <Loading /> : null }
     </Content>
   )
 }
