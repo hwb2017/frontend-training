@@ -33,10 +33,10 @@ function Recommend() {
   const dispatch = useAppDispatch();
   
   useEffect(() => {
-    if (bannerList.length == 0) {
+    if (bannerList.length === 0) {
       dispatch(getBannerList());
     }
-    if (recommendList.length == 0) {
+    if (recommendList.length === 0) {
       dispatch(getRecommendList());
     }
     // eslint-disable-next-line
