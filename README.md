@@ -353,3 +353,9 @@ const cFormContext: CFormContext = {
 }
 ```
 39. 组件内部各元素的联动更新可以通过状态和状态的设置函数来解耦，比如 states.XXX 和 setXXX, 这样子元素的更新逻辑可以通过 setXXX 统一暴露，可以多出复用，父元素不用知道它的内部实现。同时也把状态的更新(setXXX)和dom的更新解耦了
+
+### 移动端H5活动项目
+
+技术栈: preact等
+
+1. 通过url传复杂的参数时，为了更安全地保证url解析不被破坏，可以引入base62对参数进行编码，参考 [为什么使用 base62](https://razertory.github.io/2020/12/25/why-base62/)
