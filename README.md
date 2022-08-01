@@ -359,3 +359,5 @@ const cFormContext: CFormContext = {
 技术栈: preact等
 
 1. 通过url传复杂的参数时，为了更安全地保证url解析不被破坏，可以引入base62对参数进行编码，参考 [为什么使用 base62](https://razertory.github.io/2020/12/25/why-base62/)
+2. 移动端的模态框滚动穿透问题，可以借助库 tua-body-scroll-lock 来解决, 参考 [重新认识滚动穿透](https://zhuanlan.zhihu.com/p/373328247)
+3. react-loadable 用于提供组件级别的代码按需加载，并提供加载动画、延时、超时等辅助功能
