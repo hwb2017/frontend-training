@@ -361,3 +361,38 @@ const cFormContext: CFormContext = {
 1. 通过url传复杂的参数时，为了更安全地保证url解析不被破坏，可以引入base62对参数进行编码，参考 [为什么使用 base62](https://razertory.github.io/2020/12/25/why-base62/)
 2. 移动端的模态框滚动穿透问题，可以借助库 tua-body-scroll-lock 来解决, 参考 [重新认识滚动穿透](https://zhuanlan.zhihu.com/p/373328247)
 3. react-loadable 用于提供组件级别的代码按需加载，并提供加载动画、延时、超时等辅助功能
+4. 可以利用Promise链式调用实现类似中间件、生命周期钩子的效果，example code：
+```typescript
+Promise.resolve(payload)
+.then(p => {
+  // before call
+  return p
+})
+.then(p => {
+  return call(p)
+})
+.then(res => {
+  // after call
+  return res
+})
+```
+5. Promise.race 实现超时判断，example code：
+```typescript
+const createTimeoutTimer = (timeout: number) => {
+  const result = {} as { clearTimer: () => void; timer: Promise<never> }
+  result.timer = new Promise((_, reject) => {
+    const id = setTimeout(() => {
+      const error = new Error('timeout error')
+      reject(error)
+    }, timeout)
+    result.clearTimer = () => clearTimeout(id)
+  })
+  return result
+}
+
+const { timer, clearTimer } = createTimeoutTimer(timeout)
+Promise.race([timer, asyncCall()]).then(r => {
+  clearTimer()
+  return r
+})
+```
