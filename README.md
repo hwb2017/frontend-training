@@ -396,3 +396,5 @@ Promise.race([timer, asyncCall()]).then(r => {
   return r
 })
 ```
+6. Promise的then调用动态注册，参考 [axios](https://github.com/axios/axios/blob/v1.x/lib/core/Axios.js#L141) 中的代码
+7. web开发中，以双斜杠(//)开头的url，会根据当前站点的协议来自动补全url，参考 [以双斜杠//开头的URL的含义](https://blog.csdn.net/rockstar541/article/details/68060247)
