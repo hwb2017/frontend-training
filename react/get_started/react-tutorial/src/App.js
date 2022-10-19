@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import { Component } from 'react';
 import './App.css';
 import Table from './Table';
 import Form from './Form';
+import Gallery from './Gallery';
 
 class App extends Component {
   state = {
@@ -40,22 +40,9 @@ class App extends Component {
     const {characters} = this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
         <Table characterData={characters} removeCharacter={this.removeCharacter} />
         <Form handleSubmit={this.handleSubmit} />
+        <Gallery />
       </div>
     );
   }
